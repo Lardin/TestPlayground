@@ -16,14 +16,13 @@ function $(selectorString){
 }
 
 function initialize(evt){
-    var tabs = Array.prototype.slice.call($(".menu-tab"))
-    var tabContainer = Array.prototype.slice.call($(".menu-tab-container"))
+    var tabs = [].slice.call($(".menu-tab"))
+
+    hideAllTabs()
+    $("#stats-tab").style.display = "block"
 
     tabs.forEach(element => {
         element.addEventListener("click", setTab)      
-    });
-    tabContainer.forEach(element => {
-        element.style.display = "none"
     });
 
     setInterval(update, 1000 / updateSpeed)
@@ -31,14 +30,18 @@ function initialize(evt){
 
 function setTab(evt){
     var id = evt.target.dataset.tab
-    var tabContainer = Array.prototype.slice.call($(".menu-tab-container"))
     
+    hideAllTabs()
+
+    $("#" + id).style.display = "block"
+}
+function hideAllTabs(){
+    var tabContainer = [].slice.call($(".menu-tab-container"))
+
     tabContainer.forEach(element => {
         element.style.display = "none"
     });
-    $("#" + id).style.display = "block"
 }
-
 function updateUI(){
 
 }
