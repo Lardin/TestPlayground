@@ -56,7 +56,7 @@ function hideAllTabs(){
 }
 function updatePlayerStatsUI(){
     playerStatsFields.forEach(statField => {
-        statField.innerHTML = game.player.attributes[statField.dataset.selector]
+        statField.textContent = game.player.attributes[statField.dataset.selector]
     });
 }
 function updateUI(){
