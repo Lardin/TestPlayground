@@ -44,29 +44,20 @@
                     <a class="w3-bar-item w3-button menu-tab" data-tab="combat-tab">Combat</a>
                     <a class="w3-bar-item w3-button menu-tab" data-tab="world-tab">World</a>
                 </div>
-                <div class="w3-card-4 w3-blue">
-                    <div id="stats-tab" class="w3-container w3-margin menu-tab-container">
-                        <h1>Stats</h1>
-                        <table class="w3-table">
-                            <thead>
-                                <th></th>
-                                <th>Value</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Strength</td>
-                                    <td id="player-strength" class="player-stats-show" data-selector="strength"></td>
-                                </tr>
-                                <tr>
-                                    <td>Agility</td>
-                                    <td id="player-agility" class="player-stats-show" data-selector="agility"></td>
-                                </tr>
-                                <tr>
-                                    <td>Strength</td>
-                                    <td id="player-stamina" class="player-stats-show" data-selector="stamina"></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <div class="w3-card-4">
+                    <div id="stats-tab" class="w3-container w3-padding menu-tab-container">
+                        <div class="w3-card-4 w3-col m4 l4">
+                            <header class="w3-container w3-blue">
+                                <h4>Base Attributes</h4>
+                            </header>
+                            <div class="w3-container w3-padding">
+                                <ul class="w3-ul w3-border">
+                                    <li>Strength: <span class="player-stats-show" data-selector="strength"></span></li>
+                                    <li>Agility: <span class="player-stats-show" data-selector="agility"></span></li>
+                                    <li>Stamina: <span class="player-stats-show" data-selector="stamina"></span></li>
+                                </ul>
+                            </div>
+                        </div> 
                     </div>
                     <div id="skills-tab" class="w3-container w3-margin menu-tab-container">
                         <h1>Skills</h1>
