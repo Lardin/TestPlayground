@@ -1,6 +1,10 @@
+(function() {
+
 window.addEventListener("load", initialize)
 
 const updateSpeed = 30
+var tabs
+var tabContainer
 
 function $(selectorString){
     var selector = selectorString.slice(0,1)
@@ -15,7 +19,8 @@ function $(selectorString){
     return element
 }
 function initialize(evt){
-    var tabs = [].slice.call($(".menu-tab"))
+    tabs = [].slice.call($(".menu-tab"))
+    tabContainer = [].slice.call($(".menu-tab-container"))
 
     hideAllTabs()
     $("#stats-tab").style.display = "block"
@@ -36,9 +41,6 @@ function setTab(evt){
     element.classList.add("w3-red")
 }
 function hideAllTabs(){
-    var tabContainer = [].slice.call($(".menu-tab-container"))
-    var tabs = [].slice.call($(".menu-tab"))
-
     tabContainer.forEach(element => {
         element.style.display = "none"
     });
@@ -56,4 +58,4 @@ function update(){
 }
 
 
-
+})();
