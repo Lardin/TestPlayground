@@ -24,6 +24,7 @@ function initialize(evt){
 
     hideAllTabs()
     $("#stats-tab").style.display = "block"
+    $("#stats-menu-item").classList.add("w3-red")
 
     tabs.forEach(element => {
         element.addEventListener("click", setTab)      
@@ -41,6 +42,7 @@ function setTab(evt){
     element.classList.add("w3-red")
 }
 function hideAllTabs(){
+
     tabContainer.forEach(element => {
         element.style.display = "none"
     });
