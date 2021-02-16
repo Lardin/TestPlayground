@@ -22,6 +22,7 @@ function $(selectorString){
     return element
 }
 function initialize(evt){
+    w3.includeHTML()
     tabs = [].slice.call($(".menu-tab"))
     tabContainer = [].slice.call($(".menu-tab-container"))
     playerStatsFields = [].slice.call($(".player-stats-show"))
