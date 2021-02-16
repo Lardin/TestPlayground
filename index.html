@@ -1,6 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <script src="js/classes.js"></script>
         <script src="js/main.js"></script>
     </head>
     <body>
@@ -43,9 +44,29 @@
                     <a class="w3-bar-item w3-button menu-tab" data-tab="combat-tab">Combat</a>
                     <a class="w3-bar-item w3-button menu-tab" data-tab="world-tab">World</a>
                 </div>
-                <div class="w3-panel w3-blue">
+                <div class="w3-card-4 w3-blue">
                     <div id="stats-tab" class="w3-container w3-margin menu-tab-container">
                         <h1>Stats</h1>
+                        <table class="w3-table">
+                            <thead>
+                                <th></th>
+                                <th>Value</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Strength</td>
+                                    <td id="player-strength" class="player-stats-show" data-selector="strength"></td>
+                                </tr>
+                                <tr>
+                                    <td>Agility</td>
+                                    <td id="player-agility" class="player-stats-show" data-selector="agility"></td>
+                                </tr>
+                                <tr>
+                                    <td>Strength</td>
+                                    <td id="player-stamina" class="player-stats-show" data-selector="stamina"></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                     <div id="skills-tab" class="w3-container w3-margin menu-tab-container">
                         <h1>Skills</h1>
