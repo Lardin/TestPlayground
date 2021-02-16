@@ -1,10 +1,13 @@
-(function() {
 
 window.addEventListener("load", initialize)
 
 const updateSpeed = 30
 var tabs
 var tabContainer
+var playerStatsFields
+var game = {
+    player:new Player()
+}
 
 function $(selectorString){
     var selector = selectorString.slice(0,1)
@@ -21,6 +24,7 @@ function $(selectorString){
 function initialize(evt){
     tabs = [].slice.call($(".menu-tab"))
     tabContainer = [].slice.call($(".menu-tab-container"))
+    playerStatsFields = [].slice.call($(".player-stats-show"))
 
     hideAllTabs()
     $("#stats-tab").style.display = "block"
@@ -29,7 +33,7 @@ function initialize(evt){
     tabs.forEach(element => {
         element.addEventListener("click", setTab)      
     });
-
+    update()
     setInterval(update, 1000 / updateSpeed)
 }
 function setTab(evt){
@@ -50,8 +54,13 @@ function hideAllTabs(){
         element.classList.remove("w3-red")
     });
 }
+function updatePlayerStatsUI(){
+    playerStatsFields.forEach(statField => {
+        statField.innerHTML = game.player.attributes[statField.dataset.selector]
+    });
+}
 function updateUI(){
-
+    updatePlayerStatsUI()
 }
 
 function update(){
@@ -59,5 +68,3 @@ function update(){
     updateUI()
 }
 
-
-})();
