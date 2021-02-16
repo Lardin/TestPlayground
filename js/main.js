@@ -1,6 +1,10 @@
+(function() {
+
 window.addEventListener("load", initialize)
 
 const updateSpeed = 30
+var tabs
+var tabContainer
 
 function $(selectorString){
     var selector = selectorString.slice(0,1)
@@ -14,31 +18,38 @@ function $(selectorString){
     }
     return element
 }
-
 function initialize(evt){
-    var tabs = Array.prototype.slice.call($(".menu-tab"))
-    var tabContainer = Array.prototype.slice.call($(".menu-tab-container"))
+    tabs = [].slice.call($(".menu-tab"))
+    tabContainer = [].slice.call($(".menu-tab-container"))
+
+    hideAllTabs()
+    $("#stats-tab").style.display = "block"
+    $("#stats-menu-item").classList.add("w3-red")
 
     tabs.forEach(element => {
         element.addEventListener("click", setTab)      
     });
-    tabContainer.forEach(element => {
-        element.style.display = "none"
-    });
 
     setInterval(update, 1000 / updateSpeed)
 }
-
 function setTab(evt){
-    var id = evt.target.dataset.tab
-    var tabContainer = Array.prototype.slice.call($(".menu-tab-container"))
+    var element = evt.target
+    var id = element.dataset.tab
     
+    hideAllTabs()
+
+    $("#" + id).style.display = "block"
+    element.classList.add("w3-red")
+}
+function hideAllTabs(){
+
     tabContainer.forEach(element => {
         element.style.display = "none"
     });
-    $("#" + id).style.display = "block"
+    tabs.forEach(element => {
+        element.classList.remove("w3-red")
+    });
 }
-
 function updateUI(){
 
 }
@@ -49,4 +60,4 @@ function update(){
 }
 
 
-
+})();
