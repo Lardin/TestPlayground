@@ -1,5 +1,5 @@
 ---
-
+    headerColor: w3-gray
 ---
 <html>
     <head>
@@ -8,12 +8,12 @@
         <script src="js/main.js"></script>
     </head>
     <body>
-        <h1 class="w3-red w3-center">Idle'n Loot</h1>
+        <h1 class="{{ page.headerColor }} w3-center">Idle'n Loot</h1>
         
         <div class="w3-col m4 l3">
             <div class="w3-card-4 w3-margin">
                 {% include character.html %}
-            </div>
+            </div> 
             <div class="w3-card-4 w3-margin">
                 {% include region.html %}
             </div>
