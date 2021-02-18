@@ -3,13 +3,21 @@ class Character {
         this.attributes = {
             strength:{
                 label:"Strength",
+                selector:"strength",
                 value:10
             },
-            agility:10,
-            intelligence:10,
-            stamina:10
+            agility:{
+                label:"Agility",
+                selector:"agility",
+                value:8
+            },
+            stamina:{
+                label:"Stamina",
+                selector:"stamina",
+                value:9
+            },
         }
-        this.life=this.attributes.stamina*10
+        this.life=this.attributes.stamina.value*10
     }
 }
 

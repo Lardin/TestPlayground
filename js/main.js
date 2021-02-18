@@ -22,7 +22,9 @@ function $(selectorString){
     return element
 }
 function initialize(evt){
-    
+    createStatsWindow()
+
+
     tabs = [].slice.call($(".menu-tab"))
     tabContainer = [].slice.call($(".menu-tab-container"))
     playerStatsFields = [].slice.call($(".player-stats-show"))
@@ -34,6 +36,8 @@ function initialize(evt){
     tabs.forEach(element => {
         element.addEventListener("click", setTab)      
     });
+
+    
     update()
     setInterval(update, 1000 / updateSpeed)
 }
@@ -55,9 +59,24 @@ function hideAllTabs(){
         element.classList.remove("w3-red")
     });
 }
+function createStatsWindow(){
+    var statsTemplate = $(".player-stats-template")[0]
+    var tableBaseAttributes = $("#baseAttributes")
+    var keys = Object.keys(game.player.attributes)
+    var tds = statsTemplate.content.querySelectorAll("td")
+    console.log(statsTemplate)
+    keys.forEach(key => {
+        var attribute = game.player.attributes[key]
+        tds[0].textContent = attribute.label + ":"
+        tds[1].dataset.selector = attribute.selector
+        var temp = document.importNode(statsTemplate.content, true)
+        
+        tableBaseAttributes.appendChild(temp)
+    });
+}
 function updatePlayerStatsUI(){
     playerStatsFields.forEach(statField => {
-        statField.textContent = game.player.attributes[statField.dataset.selector]
+        statField.textContent = game.player.attributes[statField.dataset.selector].value
     });
 }
 function updateUI(){
