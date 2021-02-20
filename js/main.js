@@ -5,6 +5,7 @@ const updateSpeed = 30
 var tabs
 var tabContainer
 var playerStatsFields
+var playerLifeBar
 var game = {
     player:new Player()
 }
@@ -28,6 +29,7 @@ function initialize(evt){
     tabs = [].slice.call($(".menu-tab"))
     tabContainer = [].slice.call($(".menu-tab-container"))
     playerStatsFields = [].slice.call($(".player-stats-show"))
+    playerLifeBar=$("#playerLifeBar")
 
     hideAllTabs()
     $("#stats-tab").style.display = "block"
@@ -79,8 +81,17 @@ function updatePlayerStatsUI(){
         statField.textContent = game.player.attributes[statField.dataset.selector].value
     });
 }
+function updatePlayerLife(){
+    updateBar(playerLifeBar, game.player.life, game.player.actualLife)
+}
+function updateBar(bar, max, actual){
+    var percentage = (actual/max*100).toFixed(0)
+    bar.style.width=percentage+"%"
+    bar.textContent=percentage+"%"
+}
 function updateUI(){
     updatePlayerStatsUI()
+    updatePlayerLife()
 }
 
 function update(){

@@ -18,6 +18,7 @@ class Character {
             },
         }
         this.life=this.attributes.stamina.value*10
+        this.actualLife=this.life
     }
 }
 
