@@ -6,6 +6,7 @@ var tabs
 var tabContainer
 var playerStatsFields
 var playerLifeBar
+var playerActionBar
 var game = {
     player:new Player()
 }
@@ -30,6 +31,7 @@ function initialize(evt){
     tabContainer = [].slice.call($(".menu-tab-container"))
     playerStatsFields = [].slice.call($(".player-stats-show"))
     playerLifeBar=$("#playerLifeBar")
+    playerActionBar=$("#playerActionBar")
 
     hideAllTabs()
     $("#stats-tab").style.display = "block"
@@ -66,7 +68,6 @@ function createStatsWindow(){
     var tableBaseAttributes = $("#baseAttributes")
     var keys = Object.keys(game.player.attributes)
     var tds = statsTemplate.content.querySelectorAll("td")
-    console.log(statsTemplate)
     keys.forEach(key => {
         var attribute = game.player.attributes[key]
         tds[0].textContent = attribute.label + ":"
@@ -92,6 +93,7 @@ function updateBar(bar, max, actual){
 function updateUI(){
     updatePlayerStatsUI()
     updatePlayerLife()
+    updatePlayerAction()
 }
 
 function update(){

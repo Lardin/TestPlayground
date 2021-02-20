@@ -20,11 +20,15 @@ class Character {
         this.life=this.attributes.stamina.value*10
         this.actualLife=this.life
     }
+    action(){
+        console.log("Action")
+    }
 }
 
 class Player extends Character{
     constructor(){
         super()
+        this.baseActionSpeed=2000
     }
 }
 class Enemy extends Character{
