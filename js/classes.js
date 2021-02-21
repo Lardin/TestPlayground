@@ -19,6 +19,21 @@ class Character {
         }
         this.life=this.attributes.stamina.value*10
         this.actualLife=this.life
+        this.baseActionSpeed=2000
+        this.actionSpeed=40+this.attributes.agility.value
+        this.actionMeter=0
+    }
+    waitUntilAtion(){
+        this.actionMeter+=this.actionSpeed
+        if(this.actionMeter>=this.baseActionSpeed){
+            var excess = this.actionMeter - this.baseActionSpeed
+            while(excess>0){
+                this.action()
+                excess -= this.baseActionSpeed
+            }
+            this.actionMeter = 0
+        }
+        return this.actionMeter
     }
     action(){
         console.log("Action")
@@ -28,7 +43,7 @@ class Character {
 class Player extends Character{
     constructor(){
         super()
-        this.baseActionSpeed=2000
+        
     }
 }
 class Enemy extends Character{

@@ -85,6 +85,9 @@ function updatePlayerStatsUI(){
 function updatePlayerLife(){
     updateBar(playerLifeBar, game.player.life, game.player.actualLife)
 }
+function updatePlayerAction(){
+    updateBar(playerActionBar,game.player.baseActionSpeed,game.player.waitUntilAtion())
+}
 function updateBar(bar, max, actual){
     var percentage = (actual/max*100).toFixed(0)
     bar.style.width=percentage+"%"
