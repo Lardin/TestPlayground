@@ -1,7 +1,7 @@
 
 window.addEventListener("load", initialize)
 
-const updateSpeed = 30
+const updateSpeed = 20
 var tabs
 var tabContainer
 var playerStatsFields
@@ -91,7 +91,6 @@ function updatePlayerAction(){
 function updateBar(bar, max, actual){
     var percentage = (actual/max*100).toFixed(0)
     bar.style.width=percentage+"%"
-    bar.textContent=percentage+"%"
 }
 function updateUI(){
     updatePlayerStatsUI()

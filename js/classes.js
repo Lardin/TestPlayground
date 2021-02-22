@@ -9,7 +9,7 @@ class Character {
             agility:{
                 label:"Agility",
                 selector:"agility",
-                value:8
+                value:10
             },
             stamina:{
                 label:"Stamina",
@@ -19,13 +19,13 @@ class Character {
         }
         this.life=this.attributes.stamina.value*10
         this.actualLife=this.life
-        this.baseActionSpeed=2000
+        this.baseActionSpeed=4000
         this.actionSpeed=40+this.attributes.agility.value
         this.actionMeter=0
     }
     waitUntilAtion(){
         this.actionMeter+=this.actionSpeed
-        if(this.actionMeter>=this.baseActionSpeed){
+        if(this.actionMeter>this.baseActionSpeed){
             var excess = this.actionMeter - this.baseActionSpeed
             while(excess>0){
                 this.action()
