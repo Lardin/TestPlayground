@@ -2,6 +2,7 @@
     headerColor: w3-red
     navBarColor: w3-blue
     cardHeaderColor: w3-blue
+    enemyCardHeaderColor: w3-red
 ---
 <html>
     <head>
@@ -17,7 +18,7 @@
                 {% include character.html cardHeaderColor=page.cardHeaderColor %}
             </div> 
             <div class="w3-card-4 w3-margin">
-                {% include enemy.html cardHeaderColor=page.cardHeaderColor %}
+                {% include enemy.html cardHeaderColor=page.enemyCardHeaderColor %}
             </div> 
             <div class="w3-card-4 w3-margin">
                 {% include region.html cardHeaderColor=page.cardHeaderColor %}
