@@ -1,5 +1,8 @@
 ---
-
+    headerColor: w3-red
+    navBarColor: w3-blue
+    cardHeaderColor: w3-blue
+    enemyCardHeaderColor: w3-red
 ---
 <html>
     <head>
@@ -8,19 +11,22 @@
         <script src="js/main.js"></script>
     </head>
     <body>
-        <h1 class="w3-red w3-center">Idle'n Loot</h1>
+        <h1 class="{{ page.headerColor }} w3-center">Idle'n Loot</h1>
         
         <div class="w3-col m4 l3">
             <div class="w3-card-4 w3-margin">
-                {% include character.html %}
-            </div>
+                {% include character.html cardHeaderColor=page.cardHeaderColor %}
+            </div> 
             <div class="w3-card-4 w3-margin">
-                {% include region.html %}
+                {% include enemy.html cardHeaderColor=page.enemyCardHeaderColor %}
+            </div> 
+            <div class="w3-card-4 w3-margin">
+                {% include region.html cardHeaderColor=page.cardHeaderColor %}
             </div>
         </div>
         <div class="w3-col m8 l9">
             <div class="w3-margin">
-                <div class="w3-bar w3-blue">
+                <div class="w3-bar {{ page.navBarColor }}">
                     <a id="stats-menu-item" class="w3-bar-item w3-button menu-tab" data-tab="stats-tab">Stats</a>
                     <a class="w3-bar-item w3-button menu-tab" data-tab="skills-tab">Skills</a>
                     <a class="w3-bar-item w3-button menu-tab" data-tab="talents-tab">Talents</a>

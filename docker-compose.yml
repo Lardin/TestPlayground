@@ -4,8 +4,9 @@ services:
       image: jekyll/jekyll
       environment:
         - JEKYLL_ENV=development
-      command: jekyll serve --livereload --watch --host 0.0.0.0
+      command: jekyll serve --trace --force_polling --watch --incremental --livereload-port 50000 -p 4000
       ports:
           - 4000:4000
+          - 50000:50000
       volumes:
           - .:/srv/jekyll
