@@ -8,7 +8,8 @@ var playerStatsFields
 var playerLifeBar
 var playerActionBar
 var game = {
-    player:new Player()
+    player:new Player(),
+    enemy:new Enemy(),
 }
 
 function $(selectorString){
@@ -88,6 +89,12 @@ function updatePlayerLife(){
 function updatePlayerAction(){
     updateBar(playerActionBar,game.player.baseActionSpeed,game.player.waitUntilAtion())
 }
+function updateEnemyLife(){
+    updateBar(enemyLifeBar, game.enemy.life, game.enemy.actualLife)
+}
+function updateEnemyAction(){
+    updateBar(enemyActionBar,game.enemy.baseActionSpeed,game.enemy.waitUntilAtion())
+}
 function updateBar(bar, max, actual){
     var percentage = (actual/max*100).toFixed(0)
     bar.style.width=percentage+"%"
@@ -96,6 +103,8 @@ function updateUI(){
     updatePlayerStatsUI()
     updatePlayerLife()
     updatePlayerAction()
+    updateEnemyLife()
+    updateEnemyAction()
 }
 
 function update(){

@@ -19,7 +19,7 @@ class Character {
         }
         this.life=this.attributes.stamina.value*10
         this.actualLife=this.life
-        this.baseActionSpeed=4000
+        this.baseActionSpeed=2000
         this.actionSpeed=40+this.attributes.agility.value
         this.actionMeter=0
     }
@@ -35,8 +35,16 @@ class Character {
         }
         return this.actionMeter
     }
+    calcDamage(){
+        return this.attributes.strength.value
+    }
     action(){
-        console.log("Action")
+        if(this instanceof Player){
+            game.enemy.actualLife -= this.calcDamage()
+        }
+        if(this instanceof Enemy){
+            game.player.actualLife -= this.calcDamage()
+        }
     }
 }
 
@@ -49,5 +57,6 @@ class Player extends Character{
 class Enemy extends Character{
     constructor(){
         super()
+        this.baseActionSpeed=4000
     }
 }
