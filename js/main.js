@@ -9,7 +9,6 @@ var playerLifeBar
 var playerActionBar
 var game = {
     player:new Player(),
-    enemy:new Enemy(),
 }
 
 function $(selectorString){
@@ -41,6 +40,8 @@ function initialize(evt){
     tabs.forEach(element => {
         element.addEventListener("click", setTab)      
     });
+
+    spawnEnemy()
 
     
     update()
@@ -77,6 +78,14 @@ function createStatsWindow(){
         
         tableBaseAttributes.appendChild(temp)
     });
+}
+function spawnEnemy(){
+    game.enemy = new Enemy()
+}
+function checkEnemy(){
+    if(game.enemy.isDead()){
+        spawnEnemy()
+    }
 }
 function updatePlayerStatsUI(){
     playerStatsFields.forEach(statField => {

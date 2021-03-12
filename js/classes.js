@@ -22,6 +22,7 @@ class Character {
         this.baseActionSpeed=2000
         this.actionSpeed=40+this.attributes.agility.value
         this.actionMeter=0
+
     }
     waitUntilAtion(){
         this.actionMeter+=this.actionSpeed
@@ -38,25 +39,26 @@ class Character {
     calcDamage(){
         return this.attributes.strength.value
     }
-    action(){
-        if(this instanceof Player){
-            game.enemy.actualLife -= this.calcDamage()
-        }
-        if(this instanceof Enemy){
-            game.player.actualLife -= this.calcDamage()
-        }
+    isDead(){
+        return this.actualLife <= 0
     }
 }
 
 class Player extends Character{
     constructor(){
-        super()
-        
+        super()  
+    }
+    action(){
+        game.enemy.actualLife -= this.calcDamage()
+        checkEnemy()
     }
 }
 class Enemy extends Character{
     constructor(){
         super()
         this.baseActionSpeed=4000
+    }
+    action(){
+        game.player.actualLife -= this.calcDamage()
     }
 }
