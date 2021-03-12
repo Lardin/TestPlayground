@@ -1,5 +1,6 @@
-class Character {
+class Character extends EventTarget{
     constructor(){
+        super()
         this.attributes = {
             strength:{
                 label:"Strength",
@@ -23,6 +24,7 @@ class Character {
         this.actionSpeed=40+this.attributes.agility.value
         this.actionMeter=0
 
+        this.isDeadEvent = new CustomEvent("isDead")
     }
     waitUntilAtion(){
         this.actionMeter+=this.actionSpeed
@@ -50,7 +52,7 @@ class Player extends Character{
     }
     action(){
         game.enemy.actualLife -= this.calcDamage()
-        checkEnemy()
+        game.enemy.dispatchEvent(this.isDeadEvent)
     }
 }
 class Enemy extends Character{

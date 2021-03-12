@@ -81,6 +81,7 @@ function createStatsWindow(){
 }
 function spawnEnemy(){
     game.enemy = new Enemy()
+    game.enemy.addEventListener("isDead", checkEnemy)
 }
 function checkEnemy(){
     if(game.enemy.isDead()){
