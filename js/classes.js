@@ -31,7 +31,7 @@ class Character extends EventTarget{
         if(this.actionMeter>this.baseActionSpeed){
             var excess = this.actionMeter - this.baseActionSpeed
             while(excess>0){
-                this.dispatchEvent(this.doActionEvent, true)
+                this.dispatchEvent(this.doActionEvent)
                 excess -= this.baseActionSpeed
             }
             this.actionMeter = 0
