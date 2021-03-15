@@ -24,14 +24,14 @@ class Character extends EventTarget{
         this.actionSpeed=40+this.attributes.agility.value
         this.actionMeter=0
 
-        this.isDeadEvent = new CustomEvent("isDead")
+        this.doActionEvent = new CustomEvent("doAction")
     }
     waitUntilAtion(){
         this.actionMeter+=this.actionSpeed
         if(this.actionMeter>this.baseActionSpeed){
             var excess = this.actionMeter - this.baseActionSpeed
             while(excess>0){
-                this.action()
+                this.dispatchEvent(this.doActionEvent, true)
                 excess -= this.baseActionSpeed
             }
             this.actionMeter = 0
@@ -50,17 +50,10 @@ class Player extends Character{
     constructor(){
         super()  
     }
-    action(){
-        game.enemy.actualLife -= this.calcDamage()
-        game.enemy.dispatchEvent(this.isDeadEvent)
-    }
 }
 class Enemy extends Character{
     constructor(){
         super()
         this.baseActionSpeed=4000
-    }
-    action(){
-        game.player.actualLife -= this.calcDamage()
     }
 }

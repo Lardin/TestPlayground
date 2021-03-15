@@ -40,7 +40,7 @@ function initialize(evt){
     tabs.forEach(element => {
         element.addEventListener("click", setTab)      
     });
-
+    game.player.addEventListener("doAction", combat)
     spawnEnemy()
 
     
@@ -81,7 +81,19 @@ function createStatsWindow(){
 }
 function spawnEnemy(){
     game.enemy = new Enemy()
-    game.enemy.addEventListener("isDead", checkEnemy)
+    game.enemy.addEventListener("doAction", combat)
+}
+function combat(evt){
+    if(evt.srcElement instanceof Enemy){
+        game.player.actualLife -= game.enemy.calcDamage()
+    }
+    if(evt.srcElement instanceof Player){
+        game.enemy.actualLife -= game.player.calcDamage()
+        if(game.enemy.isDead()){
+            spawnEnemy()
+        }
+    }
+    
 }
 function checkEnemy(){
     if(game.enemy.isDead()){
